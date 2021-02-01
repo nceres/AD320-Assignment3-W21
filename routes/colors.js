@@ -7,12 +7,12 @@ const colorsArray = require('../data/colors.json');
 
 router.get('/', function(req, res) {
     res.header('Content-Type', 'application/json');
-    res.send(colorsArray);
+    res.status(200).send(colorsArray);
 });
 
 router.get('/:userId', function(req, res) {
     res.header('Content-Type', 'application/json');
-    res.send(colorsArray.find(element => element.id === Number(req.params.userId)) || {});
+    res.status(200).send(colorsArray.find(element => element.id === Number(req.params.userId)) || {});
 });
 
 module.exports = router;
