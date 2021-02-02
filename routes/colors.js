@@ -10,9 +10,9 @@ router.get('/', function(req, res) {
     res.status(200).send(colorsArray);
 });
 
-router.get('/:userId', function(req, res) {
+router.get('/:id', function(req, res) {
     res.header('Content-Type', 'application/json');
-    res.status(200).send(colorsArray.find(element => element.id === Number(req.params.userId)) || {});
+    res.status(200).send(colorsArray.find(element => element.id === Number(req.params.id)) || {});
 });
 
 module.exports = router;
