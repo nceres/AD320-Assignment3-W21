@@ -18,7 +18,7 @@ router.get('/:id', (req, res) => {
             target = item;
     });
 // Decision if User data is found or not.
-    (target !== null) ? found() : notFound();
+    (target !== null && Object.entries(target)!==0) ? found() : notFound();
 
 
 // Function if Users data is found, and return the object value.
@@ -27,8 +27,7 @@ router.get('/:id', (req, res) => {
     }
 // Function if Users data is not found, and return an empty object and status.
     function notFound() {
-        res.status(200);
-        res.jason(target);
+        res.status(200).json(target);
     }
 
 });
