@@ -17,7 +17,7 @@ router.get('/:id', (req, res) => {
         if (item.id == finder)
             target = item;
     });
-// Decision if User data is found or not.
+// Check if Object is Null or Empyty, then if User data is found or not.
     (target !== null && Object.entries(target)!==0) ? found() : notFound();
 
 
