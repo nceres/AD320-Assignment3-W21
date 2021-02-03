@@ -1,8 +1,9 @@
 const express = require("express");
 const router = express();
+const port = 3000;
 ​
 // require pets data
-const pets = require('../data/pets.json');
+const pets = require("./pets.json");
 ​
 // GET list of all Pets
 router.get("/", function (req, res, next) {
@@ -32,5 +33,8 @@ router.get("/:id", function (req, res, next) {
   }
 });
 ​
-
-module.exports = router
+router.listen(port, () => {
+  console.log(`Example app listening at http://localhost:${port}`);
+});
+​
+module.exports = router;
