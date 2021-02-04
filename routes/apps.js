@@ -22,8 +22,9 @@ router.get('/:id', function(req, res, next) {
 
     var idx = 0;
     while (idx < appsData.length) {
-        if (appsData[idx].id == parsed) {
-            found = appsData[idx];       
+        if (appsData[idx].id === parsed) {
+            found = appsData[idx];  
+            break;     
         }
         idx++;
     }
