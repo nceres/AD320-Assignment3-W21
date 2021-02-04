@@ -1,40 +1,19 @@
 const express = require("express");
 const router = express();
-const port = 3000;
 ​
 // require pets data
-const pets = require("./pets.json");
+const petsJson = require("../data/pets.json");
 ​
 // GET list of all Pets
-router.get("/", function (req, res, next) {
-  res.json(pets);
+router.get("/", (req, res) => {
+  res.json(petsJson);
+
 });
-​
-// GET request for specified id
-router.get("/:id", function (req, res, next) {
-  //initially declared a const to achieve this but found this way more clear
-  //some codes referenced from 'nceres'
-  var searchValue = parseInt(req.params.id);
-  var matchCheck = new Object();
-​
-  for (i = 0; i < pets.length; i++) {
-    if (pets[i].id == searchValue) {
-      matchCheck = pets[i];
-    }
-  }
-​
-  // check for empty object (no id match)
-  // send matching JSON record or empty object
-  if (Object.keys(matchCheck).length === 0) {
-    res.status(200);
-    res.json(matchCheck);
-  } else {
-    res.json(matchCheck);
-  }
+
+​//Gets pets for a specified id
+router.get("/:id", (req,res) => {
+  const pets = petsJson.find(pet => pet.id === parseInt(req.params.id));
+  res.send(pets);
 });
-​
-router.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`);
-});
-​
+
 module.exports = router;
