@@ -1,9 +1,9 @@
 const express = require("express");
-const router = express();
-​
-// require pets data
+const router = express.Router();
+
+​// require pets data
 const petsJson = require("../data/pets.json");
-​
+
 // GET list of all Pets
 router.get("/", (req, res) => {
   res.json(petsJson);
